@@ -1,38 +1,16 @@
-<div class="container px-4 py-5" id="custom-cards">
-    <h2 class="pb-2 border-bottom">{{title}}</h2>
-    <table class="table table-dark table-hover table-striped table-xl">
-        <thead>
-        <tr>
-            <th scope="col">#ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Powerstats</th>
-            <th scope="col">Gender</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">{{heroe.id}}</th>
-            <td>{{heroe.name}}</td>
-            <td>
-                <div class="row">
-                    <div class="col"> <b>Power:</b> {{powerstats.power}} </div>
-                    <div class="col"> <b>Intelligence:</b> {{powerstats.intelligence}} </div>
-                    <div class="col"> <b>Speed:</b> {{powerstats.speed}} </div>
-                </div>
-            </td>
-            <td> {{appearance.gender}} </td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<main>
+    <app-header></app-header>
+    <app-home></app-home>
+</main>
+
+
+<!-- 
+<main>
+    <app-login></app-login>
+</main> 
+-->
+
+
+
+<!-- <h1>{{ heroe['response'] }}</h1>
+<h2>{{ biography['alignment'] }}</h2> -->
