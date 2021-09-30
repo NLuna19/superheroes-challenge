@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SuperherosService } from './services/superheros.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
