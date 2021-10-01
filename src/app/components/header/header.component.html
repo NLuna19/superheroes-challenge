@@ -8,16 +8,44 @@
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-dark">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+        <li>
+            <a routerLink="../home" id="home" routerLinkActive="border-warning border-bottom"
+               class="nav-link px-2 link-dark" 
+               
+            >Home</a>
+        </li>
+        <li>
+          <a routerLink="../team" id="team" routerLinkActive="border-warning border-bottom"
+             class="nav-link px-2 link-dark"
+
+          >Team</a>
+        </li>
+        <li>
+          <a routerLink="../heroes" id="heroes" routerLinkActive="border-warning border-bottom"
+             class="nav-link px-2 link-dark"
+
+          >Heroes</a>
+        </li>
+        <li>
+          <a routerLink="../faqs" id="faqs" routerLinkActive="border-warning border-bottom"
+             class="nav-link px-2 link-dark"
+
+          >FAQs</a>
+        </li>
+        <li>
+          <a routerLink="../about" id="about" routerLinkActive="border-warning border-bottom"
+             class="nav-link px-2 link-dark"
+
+          >About</a>
+        </li>
       </ul>
 
-      <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-dark me-2 mb-2">Login</button>
-        <button type="button" class="btn btn-warning mb-2">Sign-up</button>
-      </div>
+        <div *ngIf="!this.getAuth()" class="col-md-3 text-end">
+          <a routerLink="../login" type="button" class="btn btn-outline-dark me-2 mb-2">Login</a>
+          <a routerLink="../singin" type="button" class="btn btn-warning mb-2">Sign-up</a>
+        </div>
+        <div *ngIf="this.getAuth()" class="col-md-3 text-end">
+          <a (click)= "setAuthFalse()" routerLink="../login" type="button" class="btn btn-outline-dark me-2 mb-2">Logout</a>
+        </div>
     </header>
   </div>

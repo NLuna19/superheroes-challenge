@@ -6,7 +6,8 @@ import axios from 'axios';
 })
 export class AuthenticationService {
   private _url = 'http://challenge-react.alkemy.org/';
-  
+  private logueado = false;
+
   constructor() { }
   
   loginUser(email:string, password:string) {
@@ -20,6 +21,7 @@ export class AuthenticationService {
 
   setToken(token:string){
     localStorage.setItem('accessToken',token);
+
   }
 
   getToken(){
@@ -30,6 +32,16 @@ export class AuthenticationService {
 //    localStorage.removeItem('currentUser');
     localStorage.removeItem('accessToken');
   }
+
+  getStateLogin(){
+    console.log(this.logueado);
+    return this.logueado
+  }
+
+  setStateLogin(state:boolean){
+    this.logueado = state;   
+  }
+
 
   // setUser(user:any){
   //   let user_string = JSON.stringify(user);

@@ -11,12 +11,12 @@ export class MenuComponent implements OnInit {
   showFiller = false;
 
   constructor() { 
-   this.options = ["Home", "Equipo", "Info"];
+   this.options = ["Team", "Buscar", "Info"];
    this.ventana_selected = this.options[0];
   }
 
   ngOnInit(): void {
-
+    
   }
 
   cambiarActive_menu(id:number){
