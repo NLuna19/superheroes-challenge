@@ -3,7 +3,7 @@
 <div class="container">
     <nav class="navbar-dark bg-dark" aria-label="Third navbar example">
         <div class="container-fluid">     
-            <form [formGroup]="search" class="navbar navbar-expand-sm" method="GET">
+            <form [formGroup]="search" class="navbar navbar-expand-sm">
                 <input 
                     id="tosearch" type="text"
                     class="form-control me-2 full" 
@@ -17,12 +17,14 @@
                 </button>                
             </form>
         </div>
-      </nav>
+    </nav>
 </div>
+
+//resultados de la busqueda
 <div class="container pt-3 album">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let heroe of result, let indice=index">
-            <div id={{indice}} class="card shadow-sm" style="">
+            <div id={{indice}} class="card shadow-sm">
                 <img class="card-img-top" src="{{heroe.image.url}}" alt="{{heroe.name}}">
                 <div class="card-img-overlay">
                     <p class="fs-4 px-1 text-dark float-start rounded-circle bg-white"> {{heroe.id}} </p> 
@@ -33,7 +35,8 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-warning me-2">See Profile</button>
-                          <button type="button" class="btn btn-sm btn-warning">Select</button>
+                          <button *ngIf="!isSelect(heroe.id)" (click)="selectOne(heroe.id)" type="button" class="btn btn-sm btn-warning">Select</button>
+                          <button *ngIf="isSelect(heroe.id)" (click)="removeOne(heroe.id)" type="button" class="btn btn-sm btn-danger">Remove</button>
                         </div>
                         <small class="text-muted">{{heroe['biography']['alignment']}}</small>
                     </div>
@@ -42,5 +45,3 @@
         </div>
     </div>
 </div>
-
-

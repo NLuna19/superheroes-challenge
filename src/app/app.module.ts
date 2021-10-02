@@ -37,7 +37,7 @@ const routes: Routes = [
     MainComponent,
     Page404Component,
     TeamComponent,
-    HeroesComponent
+    HeroesComponent,
   ],
   imports: [
     BrowserModule,

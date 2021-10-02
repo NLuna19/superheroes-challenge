@@ -10,18 +10,31 @@ export class HeroesComponent implements OnInit {
   public search = new FormGroup({
     parametro: new FormControl('', Validators.min(1))
   });
-  public result: any;
-
+  result: any;
+    
   constructor( private superheroes: SuperheroesService ) {
+    console.log(this.result);
   }
 
   ngOnInit(): void {
   }
   
-  async aplySearch(){
-    console.log(this.search.value.parametro);
-    await this.superheroes.search(this.search.value.parametro).then(resp => this.result = resp.results)
-    console.log(this.result)
+  aplySearch(){
+    // console.log(this.search.value.parametro);
+    this.superheroes.search(this.search.value.parametro).then(resp => this.result = resp.results)
+    // console.log(this.result)
   }
 
+  isSelect(id:number):boolean{
+    return this.superheroes.getSelection().includes(id);     
+  }
+
+  selectOne(id:number):void{
+    this.superheroes.addSelection(id);
+  }
+
+  removeOne(id:number):void{
+    this.superheroes.removeSelection(id);
+  }
+  
 }
