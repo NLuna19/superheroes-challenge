@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 
-export class SuperherosService {
+export class SuperheroesService {
   _url:string = "https://www.superheroapi.com/api.php/4270613199658906/";
   
   constructor() { }
@@ -38,8 +38,8 @@ export class SuperherosService {
     return axios.get(this._url+id+'/image')
   }
 
-  getByName(id:number){  
-    return axios.get(this._url+'/search/name')
+  search(text:string){  
+    return axios.get(this._url+'/search/'+text).then(resp => resp.data)
   }
   
 }

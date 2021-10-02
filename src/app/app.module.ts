@@ -13,13 +13,15 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { Page404Component } from './components/page404/page404.component';
+import { TeamComponent } from './components/team/team.component';
+import { HeroesComponent } from './components/heroes/heroes.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'team', component: HomeComponent},
-  {path: 'heroes', component: HomeComponent},
+  {path: 'team', component: TeamComponent},
+  {path: 'heroes', component: HeroesComponent},
   {path: 'faqs', component: HomeComponent},
   {path: 'about', component: HomeComponent},
   {path: '**', component: Page404Component},
@@ -33,7 +35,9 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     MainComponent,
-    Page404Component
+    Page404Component,
+    TeamComponent,
+    HeroesComponent
   ],
   imports: [
     BrowserModule,

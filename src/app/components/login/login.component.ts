@@ -9,7 +9,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   //styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public token!: Object;
+  public ret!: Object;
+  public token!: string;
   private _hover:boolean = false;
 
   formLogin = new FormGroup({
@@ -17,8 +18,6 @@ export class LoginComponent implements OnInit {
     userpassword: new FormControl('', Validators.required)
   });
   
-  
-
   constructor( private auth: AuthenticationService, public router: Router) { 
   }
 
@@ -26,21 +25,29 @@ export class LoginComponent implements OnInit {
     
   }
 
-  login(){
+  async login(){
     let email = this.formLogin.value.useremail;
     let password = this.formLogin.value.userpassword;
-    if(email === "" || password === ""){
-      
-    }else{
-      this.auth.loginUser(email, password)
-        .then(resp => {
-          this.token=resp;
-          this.auth.setStateLogin(true); //
-          this.router.navigateByUrl('/home')
+    if(this.formLogin.valid){
+      await this.auth.loginUser(email, password)
+      .then(resp => {
+        this.ret = resp
+        this.token = resp['token'];
       })
       .catch(error => {
-        this.auth.setStateLogin(false);
-      });  
+        this.ret = error
+      });
+      if( !this.formLogin.valid || this.ret === null || this.ret === undefined){
+        this.auth.setStateLogin(false);   
+           
+      }else{
+        this.auth.setStateLogin(true); //
+        this.router.navigateByUrl('/home')
+        this.auth.setToken(this.token);
+        console.log(this.auth.getToken());
+      }
+    }else{
+      
     }
   }
 

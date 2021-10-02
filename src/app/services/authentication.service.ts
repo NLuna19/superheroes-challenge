@@ -1,3 +1,4 @@
+import { Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 
@@ -21,7 +22,6 @@ export class AuthenticationService {
 
   setToken(token:string){
     localStorage.setItem('accessToken',token);
-
   }
 
   getToken(){
@@ -34,7 +34,7 @@ export class AuthenticationService {
   }
 
   getStateLogin(){
-    console.log(this.logueado);
+    // console.log(this.logueado);
     return this.logueado
   }
 

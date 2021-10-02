@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<div class="container">
+    <nav class="navbar-dark bg-dark" aria-label="Third navbar example">
+        <div class="container-fluid">     
+            <form [formGroup]="search" class="navbar navbar-expand-sm" method="GET">
+                <input 
+                    id="tosearch" type="text"
+                    class="form-control me-2 full" 
+                    placeholder="Search" aria-label="Search" 
+                    formControlName="parametro"
+                >
+                <button id="btnsearch" class="btn btn-outline-light" type="submit" (click)="aplySearch()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 20 20">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>                
+            </form>
+        </div>
+      </nav>
+</div>
+<div class="container pt-3 album">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col" *ngFor="let heroe of result, let indice=index">
+            <div id={{indice}} class="card shadow-sm" style="">
+                <img class="card-img-top" src="{{heroe.image.url}}" alt="{{heroe.name}}">
+                <div class="card-img-overlay">
+                    <p class="fs-4 px-1 text-dark float-start rounded-circle bg-white"> {{heroe.id}} </p> 
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{heroe.name}}</h4>
+                    <p class="card-text">{{heroe['biography']['full-name']}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-warning me-2">See Profile</button>
+                          <button type="button" class="btn btn-sm btn-warning">Select</button>
+                        </div>
+                        <small class="text-muted">{{heroe['biography']['alignment']}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

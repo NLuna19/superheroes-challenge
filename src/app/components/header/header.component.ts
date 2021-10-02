@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   
   setAuthFalse(){
     this.auth.setStateLogin(false);
+    this.auth.logout()
   }
 
 }
