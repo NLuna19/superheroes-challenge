@@ -11,6 +11,7 @@ export class HeroesComponent implements OnInit {
     parametro: new FormControl('', Validators.min(1))
   });
   result: any;
+  focus: number | undefined;
     
   constructor( private superheroes: SuperheroesService ) {
     console.log(this.result);
@@ -20,9 +21,7 @@ export class HeroesComponent implements OnInit {
   }
   
   aplySearch(){
-    // console.log(this.search.value.parametro);
     this.superheroes.search(this.search.value.parametro).then(resp => this.result = resp.results)
-    // console.log(this.result)
   }
 
   isSelect(id:number):boolean{
@@ -37,4 +36,8 @@ export class HeroesComponent implements OnInit {
     this.superheroes.removeSelection(id);
   }
   
+  seeProfile(indice:number){
+    this.focus = indice
+  }
+
 }

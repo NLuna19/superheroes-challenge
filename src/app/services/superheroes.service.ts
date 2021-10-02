@@ -22,7 +22,7 @@ export class SuperheroesService {
   }
   
   addSelection(id:number){
-    if (this._selection.length <= 6) {
+    if (this._selection.length < 6) {
       this._selection.push(id);
     }
   }

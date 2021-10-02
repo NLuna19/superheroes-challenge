@@ -22,23 +22,40 @@
 
 //resultados de la busqueda
 <div class="container pt-3 album">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngFor="let heroe of result, let indice=index">
-            <div id={{indice}} class="card shadow-sm">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+        <div id={{indice}} class="col d-flex" *ngFor="let heroe of result, let indice=index">
+            <div class="card shadow-sm">
                 <img class="card-img-top" src="{{heroe.image.url}}" alt="{{heroe.name}}">
-                <div class="card-img-overlay">
-                    <p class="fs-4 px-1 text-dark float-start rounded-circle bg-white"> {{heroe.id}} </p> 
+                <div [class.bg-light]="(this.focus === indice)" class="card-img-overlay">
+                    <p *ngIf="!(this.focus === indice)" class="fs-4 px-1 text-dark float-start rounded-circle bg-white"> {{heroe.id}} </p> 
+                    <div class="row" *ngIf="(this.focus === indice)">
+                        <h4 class="card-title">{{heroe.name}}</h4>
+                        <p class="card-text">{{heroe['biography']['full-name']}}</p>
+                        <div class="col-sm" style="font-size: .8rem;">
+                            <p class="card-text"> Intelligence: {{heroe['powerstats']['intelligence']}}</p>
+                            <p class="card-text"> Strength: {{heroe['powerstats']['strength']}}</p>
+                            <p class="card-text"> Speed: {{heroe['powerstats']['speed']}}</p>
+                        </div>
+                        <div class="col-sm" style="font-size: .8rem;">
+                            <p class="card-text"> Durability: {{heroe['powerstats']['durability']}}</p>
+                            <p class="card-text"> Power: {{heroe['powerstats']['power']}}</p>
+                            <p class="card-text"> Combat: {{heroe['powerstats']['combat']}}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">{{heroe.name}}</h4>
                     <p class="card-text">{{heroe['biography']['full-name']}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-warning me-2">See Profile</button>
-                          <button *ngIf="!isSelect(heroe.id)" (click)="selectOne(heroe.id)" type="button" class="btn btn-sm btn-warning">Select</button>
-                          <button *ngIf="isSelect(heroe.id)" (click)="removeOne(heroe.id)" type="button" class="btn btn-sm btn-danger">Remove</button>
+                            <button type="button" class="btn btn-sm btn-outline-warning me-2" 
+                                    *ngIf="!(this.focus === indice)" (click)="seeProfile(indice)">See Profile</button>
+                            <button type="button" class="btn btn-sm btn-outline-warning me-2" 
+                                    *ngIf="(this.focus === indice)" (click)="seeProfile(-1)" >Back</button>
+                            <button *ngIf="!isSelect(heroe.id)" (click)="selectOne(heroe.id)" type="button" class="btn btn-sm btn-warning">Select</button>
+                            <button *ngIf="isSelect(heroe.id)" (click)="removeOne(heroe.id)" type="button" class="btn btn-sm btn-danger">Remove</button>
                         </div>
-                        <small class="text-muted">{{heroe['biography']['alignment']}}</small>
+                        <small class="text-muted" style="font-size: .8rem;">{{heroe['biography']['alignment']}}</small>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignComponent } from './components/sign/sign.component';
 import { HomeComponent } from './components/home/home.component';
@@ -29,7 +28,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     LoginComponent,
     SignComponent,
     HomeComponent,
