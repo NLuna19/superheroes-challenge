@@ -1,6 +1,8 @@
 import { SuperheroesService  } from '../../services/superheroes.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-heroes',
@@ -13,8 +15,13 @@ export class HeroesComponent implements OnInit {
   result: any;
   focus: number | undefined;
     
-  constructor( private superheroes: SuperheroesService ) {
-    console.log(this.result);
+  constructor( private superheroes: SuperheroesService, private auth: AuthenticationService, public router: Router ) {
+    if(this.auth.getStateLogin()){
+      
+    }
+    else{
+      this.router.navigateByUrl('/login')
+    }
   }
 
   ngOnInit(): void {

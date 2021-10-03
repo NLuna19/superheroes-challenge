@@ -28,20 +28,20 @@
                 <img class="card-img-top" src="{{heroe.image.url}}" alt="{{heroe.name}}">
                 <div [class.bg-light]="(this.focus === indice)" class="card-img-overlay">
                     <p *ngIf="!(this.focus === indice)" class="fs-4 px-1 text-dark float-start rounded-circle bg-white"> {{heroe.id}} </p> 
-                    <div class="row" *ngIf="(this.focus === indice)">
+                    
+                    <div class="row" style="font-size: .8rem;" *ngIf="(this.focus === indice)">
                         <h4 class="card-title">{{heroe.name}}</h4>
-                        <p class="card-text">{{heroe['biography']['full-name']}}</p>
                         <div class="col-sm" style="font-size: .8rem;">
-                            <p class="card-text"> Intelligence: {{heroe['powerstats']['intelligence']}}</p>
-                            <p class="card-text"> Strength: {{heroe['powerstats']['strength']}}</p>
-                            <p class="card-text"> Speed: {{heroe['powerstats']['speed']}}</p>
-                        </div>
-                        <div class="col-sm" style="font-size: .8rem;">
-                            <p class="card-text"> Durability: {{heroe['powerstats']['durability']}}</p>
-                            <p class="card-text"> Power: {{heroe['powerstats']['power']}}</p>
-                            <p class="card-text"> Combat: {{heroe['powerstats']['combat']}}</p>
+                            <p class="card-text"> Fullname: {{heroe['biography']['full-name']}}</p>
+                            <p class="card-text"> Weight: {{heroe['appearance']['weight'][1]}}</p>
+                            <p class="card-text"> Height: {{heroe['appearance']['height'][1]}}</p>
+                            <p class="card-text"> Eyes: {{heroe['appearance']['eye-color']}}</p>
+                            <p class="card-text"> Hair: {{heroe['appearance']['hair-color']}}</p>
+                            <p class="card-text"> Alias: {{heroe['biography']['aliases'][0]}}</p>
+                            <p class="card-text"> Workplace: {{heroe['work']['base']}}</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">{{heroe.name}}</h4>
@@ -49,7 +49,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-warning me-2" 
-                                    *ngIf="!(this.focus === indice)" (click)="seeProfile(indice)">See Profile</button>
+                                    *ngIf="!(this.focus === indice)" (click)="seeProfile(indice)">Profile</button>
                             <button type="button" class="btn btn-sm btn-outline-warning me-2" 
                                     *ngIf="(this.focus === indice)" (click)="seeProfile(-1)" >Back</button>
                             <button *ngIf="!isSelect(heroe.id)" (click)="selectOne(heroe.id)" type="button" class="btn btn-sm btn-warning">Select</button>

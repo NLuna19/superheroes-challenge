@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     userpassword: new FormControl('', Validators.required)
   });
   
-  constructor( private auth: AuthenticationService, public router: Router) { 
+  constructor( private auth: AuthenticationService, public router: Router ) { 
   }
 
   ngOnInit(): void {
@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
         this.auth.setStateLogin(true); //
         this.router.navigateByUrl('/home')
         this.auth.setToken(this.token);
-        console.log(this.auth.getToken());
       }
     }else{
       

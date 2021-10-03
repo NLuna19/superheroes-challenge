@@ -40,6 +40,8 @@ export class AuthenticationService {
 
   setStateLogin(state:boolean){
     this.logueado = state;   
+    console.log(this.logueado);
+    
   }
 
 

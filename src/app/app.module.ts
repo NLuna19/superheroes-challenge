@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { SignComponent } from './components/sign/sign.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
@@ -21,15 +20,12 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'team', component: TeamComponent},
   {path: 'heroes', component: HeroesComponent},
-  {path: 'faqs', component: HomeComponent},
-  {path: 'about', component: HomeComponent},
   {path: '**', component: Page404Component},
 ];
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignComponent,
     HomeComponent,
     HeaderComponent,
     MainComponent,
