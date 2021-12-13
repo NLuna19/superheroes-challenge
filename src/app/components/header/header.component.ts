@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private auth: AuthenticationService ) { 
+  constructor( private auth: AuthenticationService, private localStorage: LocalStorageService) { 
   }
 
   ngOnInit(): void {
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   
   setAuthFalse(){
     this.auth.setStateLogin(false);
-    this.auth.logout()
+    this.localStorage.logout()
   }
 
 }

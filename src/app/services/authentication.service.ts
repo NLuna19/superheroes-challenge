@@ -20,18 +20,17 @@ export class AuthenticationService {
     );
   }
 
-  setToken(token:string){
-    localStorage.setItem('accessToken',token);
-  }
+  // setToken(token:string){
+  //   localStorage.setItem('accessToken',token);
+  // }
 
-  getToken(){
-    return localStorage.getItem('accessToken');
-  }
+  // getToken(){
+  //   return localStorage.getItem('accessToken');
+  // }
   
-  logout(){
-//    localStorage.removeItem('currentUser');
-    localStorage.removeItem('accessToken');
-  }
+  // logout(){
+  //   localStorage.removeItem('accessToken');
+  // }
 
   getStateLogin(){
     // console.log(this.logueado);
@@ -40,8 +39,7 @@ export class AuthenticationService {
 
   setStateLogin(state:boolean){
     this.logueado = state;   
-    console.log(this.logueado);
-    
+    console.log('se cambio StateLogin: '+ this.logueado);  
   }
 
 

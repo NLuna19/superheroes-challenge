@@ -16,9 +16,13 @@ export class SuperheroesService {
     return resp.data; 
   }
 
-  async search(text:string){  
-    const resp = await axios.get(this._url + '/search/' + text);
-    return resp.data;
+  async search(text:string|null){  
+    try {
+      const resp = await axios.get(this._url + '/search/' + text);
+      return resp.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
   
   addSelection(id:number){

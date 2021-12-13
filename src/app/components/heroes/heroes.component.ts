@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-heroes',
@@ -15,9 +16,14 @@ export class HeroesComponent implements OnInit {
   result: any;
   focus: number | undefined;
     
-  constructor( private superheroes: SuperheroesService, private auth: AuthenticationService, public router: Router ) {
+  constructor( private superheroes: SuperheroesService, private auth: AuthenticationService, private localStorage: LocalStorageService, public router: Router ) {
     if(this.auth.getStateLogin()){
-      
+      if(localStorage.getLastSearch() === null){
+        localStorage.setLastSearch('');
+      }else{
+        
+        this.superheroes.search(localStorage.getLastSearch()).then(resp => this.result = resp.results);
+      }
     }
     else{
       this.router.navigateByUrl('/login')
@@ -28,7 +34,8 @@ export class HeroesComponent implements OnInit {
   }
   
   aplySearch(){
-    this.superheroes.search(this.search.value.parametro).then(resp => this.result = resp.results)
+    this.superheroes.search(this.search.value.parametro).then(resp => this.result = resp.results);
+    this.localStorage.setLastSearch(this.search.value.parametro);
   }
 
   isSelect(id:number):boolean{

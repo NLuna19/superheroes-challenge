@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     userpassword: new FormControl('', Validators.required)
   });
   
-  constructor( private auth: AuthenticationService, public router: Router ) { 
+  constructor( private auth: AuthenticationService, private localStorage: LocalStorageService, public router: Router ) { 
   }
 
   ngOnInit(): void {
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
       }else{
         this.auth.setStateLogin(true); //
         this.router.navigateByUrl('/home')
-        this.auth.setToken(this.token);
+        this.localStorage.setToken(this.token);
       }
     }else{
       
@@ -68,6 +69,6 @@ export class LoginComponent implements OnInit {
 
 
   //email: challenge@alkemy.org
-  //password: react
+  //password: angular
 
 }
