@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
   async login(){
     let email = this.formLogin.value.useremail;
     let password = this.formLogin.value.userpassword;
+    
     if(this.formLogin.valid){
+
       await this.auth.loginUser(email, password)
       .then(resp => {
         this.ret = resp
@@ -39,8 +41,8 @@ export class LoginComponent implements OnInit {
         this.ret = error
       });
       if( !this.formLogin.valid || this.ret === null || this.ret === undefined){
-        this.auth.setStateLogin(false);   
-           
+        this.auth.setStateLogin(false);
+        this.router.navigateByUrl('/login')
       }else{
         this.auth.setStateLogin(true); //
         this.router.navigateByUrl('/home')

@@ -9,32 +9,51 @@
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
-            <a routerLink="../home" id="home" routerLinkActive="border-warning border-bottom"
-              class="nav-link px-2 link-dark"  
-            >Home</a>
+          <app-hipervinculo 
+            [id]="'home'" 
+            [content]="'Home'"
+            [route]="'../home'"
+            [class]="class"
+            [classActive]="classActive"
+          ></app-hipervinculo>
         </li>
         <li>
-          <a routerLink="../team" id="team" routerLinkActive="border-warning border-bottom"
-            class="nav-link px-2 link-dark"
-          >Team</a>
+          <app-hipervinculo 
+            [id]="'team'" 
+            [content]="'Team'"
+            [route]="'../team'"
+            [class]="class"
+            [classActive]="classActive"
+          ></app-hipervinculo>
         </li>
         <li>
-          <a routerLink="../heroes" id="heroes" routerLinkActive="border-warning border-bottom"
-            class="nav-link px-2 link-dark"
-          >Heroes</a>
+          <app-hipervinculo 
+            [id]="'heroes'" 
+            [content]="'Heroes'"
+            [route]="'../heroes'"
+            [class]="class"
+            [classActive]="classActive"
+          ></app-hipervinculo>
         </li>
         <li>
-          <a routerLink="../faqs" id="faqs" routerLinkActive="border-warning border-bottom"
-             class="nav-link px-2 link-dark"
-          >FAQs</a>
+          <app-hipervinculo 
+            [id]="'faqs'" 
+            [content]="'FAQs'"
+            [route]="'../faqs'"
+            [class]="class"
+            [classActive]="classActive"
+          ></app-hipervinculo>
         </li>
         <li>
-          <a routerLink="../about" id="about" routerLinkActive="border-warning border-bottom"
-             class="nav-link px-2 link-dark"
-          >About</a>
+          <app-hipervinculo 
+            [id]="'about'" 
+            [content]="'About'"
+            [route]="'../about'"
+            [class]="class"
+            [classActive]="classActive"
+          ></app-hipervinculo>
         </li>
       </ul>
-
         <div *ngIf="!this.getAuth()" class="col-md-3 text-end">
           <a routerLink="../login" type="button" class="btn btn-outline-dark me-2 mb-2">Login</a>
           <a routerLink="../singin" type="button" class="btn btn-warning mb-2">Sign-up</a>

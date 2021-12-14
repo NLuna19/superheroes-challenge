@@ -13,6 +13,8 @@ import { MainComponent } from './components/main/main.component';
 import { Page404Component } from './components/page404/page404.component';
 import { TeamComponent } from './components/team/team.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
+import { HipervinculoComponent } from './components/hipervinculo/hipervinculo.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,13 +34,15 @@ const routes: Routes = [
     Page404Component,
     TeamComponent,
     HeroesComponent,
+    HipervinculoComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   exports: [
     RouterModule
