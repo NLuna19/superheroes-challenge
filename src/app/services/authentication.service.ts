@@ -12,9 +12,7 @@ export class AuthenticationService {
   private logueado = false;
 
   constructor() { }
-  
-
-
+ 
   loginUser(credential: LoginCredentials) {
     const email = credential.email;
     const password = credential.password;
@@ -25,20 +23,8 @@ export class AuthenticationService {
       error
       }
     );
+    localStorage.removeItem('search');
   }
-
-
-  // setToken(token:string){
-  //   localStorage.setItem('accessToken',token);
-  // }
-
-  // getToken(){
-  //   return localStorage.getItem('accessToken');
-  // }
-  
-  // logout(){
-  //   localStorage.removeItem('accessToken');
-  // }
 
   getStateLogin(){
     // console.log(this.logueado);

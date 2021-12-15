@@ -1,7 +1,7 @@
-import { SuperheroesService  } from '../../services/superheroes.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SuperheroesService } from 'src/app/services/superheroes.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -20,8 +20,7 @@ export class HeroesComponent implements OnInit {
     if(this.auth.getStateLogin()){
       if(localStorage.getLastSearch() === null){
         localStorage.setLastSearch('');
-      }else{
-        
+      }else{ 
         this.superheroes.search(localStorage.getLastSearch()).then(resp => this.result = resp.results);
       }
     }
@@ -32,26 +31,30 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  get heroesService(): SuperheroesService{
+    return this.superheroes as SuperheroesService;
+  }
   
   aplySearch(){
     this.superheroes.search(this.search.value.parametro).then(resp => this.result = resp.results);
     this.localStorage.setLastSearch(this.search.value.parametro);
   }
 
-  isSelect(id:number):boolean{
-    return this.superheroes.getSelection().includes(id);     
-  }
+  // isSelect(id:number):boolean{
+  //   return this.superheroes.getSelection().includes(id);     
+  // }
 
-  selectOne(id:number):void{
-    this.superheroes.addSelection(id);
-  }
+  // selectOne(id:number):void{
+  //   this.superheroes.addSelection(id);
+  // }
 
-  removeOne(id:number):void{
-    this.superheroes.removeSelection(id);
-  }
+  // removeOne(id:number):void{
+  //   this.superheroes.removeSelection(id);
+  // }
   
-  seeProfile(indice:number){
-    this.focus = indice
-  }
+  // seeProfile(indice:number){
+  //   this.focus = indice
+  // }
 
 }

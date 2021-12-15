@@ -19,6 +19,7 @@ import { TeamComponent } from './components/team/team.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { HipervinculoComponent } from './components/hipervinculo/hipervinculo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardHeroeComponent } from './components/card-heroe/card-heroe.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
     TeamComponent,
     HeroesComponent,
     HipervinculoComponent,
+    CardHeroeComponent,
   ],
   imports: [
     BrowserModule,
