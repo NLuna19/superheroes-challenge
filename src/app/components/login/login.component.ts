@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   private _hover:boolean = false;
 
   formLogin = new FormGroup({
-    useremail : new FormControl('', Validators.required),
+    useremail : new FormControl('', [Validators.required, Validators.email]),
     userpassword: new FormControl('', Validators.required)
   });
   
@@ -27,12 +27,10 @@ export class LoginComponent implements OnInit {
   }
 
   async login(){
-    let email = this.formLogin.value.useremail;
-    let password = this.formLogin.value.userpassword;
+    const credential = this.formLogin.value;
     
     if(this.formLogin.valid){
-
-      await this.auth.loginUser(email, password)
+      await this.auth.loginUser(credential)
       .then(resp => {
         this.ret = resp
         this.token = resp['token'];
@@ -51,6 +49,14 @@ export class LoginComponent implements OnInit {
     }else{
       
     }
+  }
+
+  get emailControl():FormControl{
+    return this.formLogin.get('useremail') as FormControl;
+  }
+
+  get passwordControl():FormControl{
+    return this.formLogin.get('userpassword') as FormControl;
   }
 
   getAuth(){

@@ -6,3 +6,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.ng-touched.ng-invalid:is(input,textarea),
+.ng-dirty.ng-invalid:is(input,textarea) {
+    outline-color: 2px solid #bd0c0c ;
+}

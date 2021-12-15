@@ -1,6 +1,8 @@
+import { LoginComponent } from './../components/login/login.component';
 import { Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { LoginCredentials } from "../components/login/login-credentials";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,12 @@ export class AuthenticationService {
 
   constructor() { }
   
-  loginUser(email:string, password:string) {
+
+
+  loginUser(credential: LoginCredentials) {
+    const email = credential.email;
+    const password = credential.password;
+
     return axios.post(this._url, {email:email, password:password})
     .then( resp => resp.data )
     .catch(error => {
@@ -19,6 +26,7 @@ export class AuthenticationService {
       }
     );
   }
+
 
   // setToken(token:string){
   //   localStorage.setItem('accessToken',token);
