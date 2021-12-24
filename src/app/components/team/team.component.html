@@ -4,42 +4,15 @@
     <div class="row col col-md-6 btn-dark rounded-2 p-2 me-1">  
         <p class="fs-3"> Heroes </p>
         <div class="container py-3 album">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2">
-                <div id={{indice}} class="col d-flex" *ngFor="let heroe of result, let indice=index">
-                    <div class="card bg-dark shadow-sm">
-                        <img class="card-img-top" src="{{heroe.image.url}}" alt="{{heroe.name}}">
-                        <div [class.bg-black]="(this.focus === indice)" class="card-img-overlay">
-                            <p *ngIf="!(this.focus === indice)" class="fs-4 px-1 text-dark float-start rounded-circle bg-white"> {{heroe.id}} </p> 
-                            <div class="row" *ngIf="(this.focus === indice)">
-                                <h4 class="card-title">{{heroe.name}}</h4>
-                                <p class="card-text">{{heroe['biography']['full-name']}}</p>
-                                <div class="col-sm" style="font-size: .8rem;">
-                                    <p class="card-text"> Intell: {{heroe['powerstats']['intelligence']}}</p>
-                                    <p class="card-text"> Strength: {{heroe['powerstats']['strength']}}</p>
-                                    <p class="card-text"> Speed: {{heroe['powerstats']['speed']}}</p>
-                                    <p class="card-text"> Durability: {{heroe['powerstats']['durability']}}</p>
-                                    <p class="card-text"> Power: {{heroe['powerstats']['power']}}</p>
-                                    <p class="card-text"> Combat: {{heroe['powerstats']['combat']}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">{{heroe.name}}</h4>
-                            <p class="card-text">{{heroe['biography']['full-name']}}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-warning me-2" 
-                                            *ngIf="!(this.focus === indice)" (click)="seeProfile(indice)">Profile</button>
-                                    <button type="button" class="btn btn-sm btn-outline-warning me-2" 
-                                            *ngIf="(this.focus === indice)" (click)="seeProfile(-1)" >Back</button>
-                                    <button type="button" class="btn btn-sm btn-danger fs-6" 
-                                            (click)="removeOne(heroe.id)"> Remove </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <app-card-heroe 
+                [result]="result" 
+                [cols]="2" 
+                [showPowerstats]="true" 
+                [showDescription]="false"
+                [onlySelected]="true"
+            ></app-card-heroe>
+
         </div>
     </div>
         

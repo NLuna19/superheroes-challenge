@@ -20,16 +20,33 @@
     </nav>
 </div>
 
-//resultados de la busqueda
+<!-- resultados de la busqueda -->
 
 
 <div class="container pt-3 album">
+
+    <app-card-heroe 
+        [result]="result" 
+        [cols]="4" 
+        [showPowerstats]="false" 
+        [showDescription]="true"
+    ></app-card-heroe>
+
+    <!-- <mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let heroe of result">
+            <div >
+                <p class="text-white">sad</p>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
         <div id={{indice}} class="col d-flex" *ngFor="let heroe of result, let indice=index">
             
             <app-card-heroe [heroe]="heroe" [index]="indice"></app-card-heroe>
-
+            
         </div>
-    </div>
+    </div> -->
 </div>
 

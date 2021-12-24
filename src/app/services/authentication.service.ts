@@ -17,13 +17,14 @@ export class AuthenticationService {
     const email = credential.email;
     const password = credential.password;
 
+    //localStorage.removeItem('search');
+
     return axios.post(this._url, {email:email, password:password})
     .then( resp => resp.data )
     .catch(error => {
       error
       }
     );
-    localStorage.removeItem('search');
   }
 
   getStateLogin(){
