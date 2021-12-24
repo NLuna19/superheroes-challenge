@@ -1,4 +1,59 @@
 
+<mat-grid-list cols="{{cols}}" rowHeight="1:2" gutterSize="1rem">
+    <mat-grid-tile  *ngFor="let heroe of result , let indice=index" >
+        <div *ngIf="!(this.onlySelected && !isSelect(heroe.id))" class="card shadow-sm">
+            <img class="card-img-top" src="{{heroe.image.url}}" alt="{{heroe.name}}">
+            <div [class.bg-dark]="(this.focus === indice)" class="card-img-overlay">
+                <p *ngIf="!(this.focus === indice)" class="fs-4 px-1 text-dark float-start rounded-circle bg-white"> {{heroe.id}} </p> 
+                
+                <div class="row" style="font-size: .8rem;" *ngIf="(this.focus === indice)">
+                    <h2 class="card-title text-white">{{heroe.name}}</h2>
+
+                    <div class="col-sm" style="font-size: .8rem;" *ngIf="showDescription">
+                        <app-pill-text [title]="'Fullname: '"  [text]="heroe['biography']['full-name']"> </app-pill-text>
+                        <app-pill-text [title]="'Weight: '"    [text]="heroe['appearance']['weight'][1]"> </app-pill-text>
+                        <app-pill-text [title]="'Height: '"    [text]="heroe['appearance']['height'][1]"> </app-pill-text>
+                        <app-pill-text [title]="'Eyes: '"      [text]="heroe['appearance']['eye-color']"> </app-pill-text>
+                        <app-pill-text [title]="'Hair: '"      [text]="heroe['appearance']['hair-color']"> </app-pill-text>
+                        <app-pill-text [title]="'Alias: '"     [text]="heroe['biography']['aliases'][0]"> </app-pill-text>
+                        <app-pill-text [title]="'Workplace: '" [text]="heroe['work']['base']"> </app-pill-text>
+                    </div>
+
+                    <div class="col-sm" style="font-size: .8rem;" *ngIf="showPowerstats">
+                        <app-pill-text [title]="'Intelligence: '" [text]="heroe['powerstats']['intelligence']"> </app-pill-text>
+                        <app-pill-text [title]="'Strength: '" [text]="heroe['powerstats']['strength']"> </app-pill-text>
+                        <app-pill-text [title]="'Speed: '"  [text]="heroe['powerstats']['speed']"> </app-pill-text>
+                        <app-pill-text [title]="'Durability: '" [text]="heroe['powerstats']['durability']"> </app-pill-text>
+                        <app-pill-text [title]="'Power: '" [text]="heroe['powerstats']['power']"> </app-pill-text>
+                        <app-pill-text [title]="'Combat: '" [text]="heroe['powerstats']['combat']"> </app-pill-text>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h4 class="card-title">{{heroe.name}}</h4>
+                <p class="card-text">{{heroe['biography']['full-name']}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-warning me-2" 
+                                *ngIf="!(this.focus === indice)" (click)="seeProfile(indice)">Profile</button>
+                        <button type="button" class="btn btn-sm btn-outline-warning me-2" 
+                                *ngIf="(this.focus === indice)" (click)="seeProfile(-1)" >Back</button>
+                        <button *ngIf="!isSelect(heroe.id)" (click)="selectOne(heroe.id)" type="button" class="btn btn-sm btn-warning">Select</button>
+                        <button *ngIf="isSelect(heroe.id)" (click)="removeOne(heroe.id)" type="button" class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                    <small class="text-muted" style="font-size: .8rem;">{{heroe['biography']['alignment']}}</small>
+                </div>
+            </div>
+        </div> 
+ 
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+
+<!-- 
 <div class="card shadow-sm">
     <img class="card-img-top" src="{{heroe.image.url}}" alt="{{heroe.name}}">
     <div [class.bg-light]="(this.focus === index)" class="card-img-overlay">
@@ -33,4 +88,5 @@
             <small class="text-muted" style="font-size: .8rem;">{{heroe['biography']['alignment']}}</small>
         </div>
     </div>
-</div>
+</div> 
+-->

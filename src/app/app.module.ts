@@ -7,8 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import Swal from 'sweetalert2';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
+import Swal from 'sweetalert2';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,6 +23,7 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { HipervinculoComponent } from './components/hipervinculo/hipervinculo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardHeroeComponent } from './components/card-heroe/card-heroe.component';
+import { PillTextComponent } from './components/pill-text/pill-text.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -30,6 +33,7 @@ const routes: Routes = [
   {path: 'heroes', component: HeroesComponent},
   {path: '**', component: Page404Component},
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,7 @@ const routes: Routes = [
     HeroesComponent,
     HipervinculoComponent,
     CardHeroeComponent,
+    PillTextComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
+    MatGridListModule,
+    MatCardModule,
     FormsModule
   ],
   exports: [
