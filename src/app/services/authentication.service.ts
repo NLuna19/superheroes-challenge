@@ -2,7 +2,7 @@ import { LoginComponent } from './../components/login/login.component';
 import { Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { LoginCredentials } from "../components/login/login-credentials";
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,33 @@ export class AuthenticationService {
 
   constructor() { }
  
-  loginUser(credential: LoginCredentials) {
-    const email = credential.email;
-    const password = credential.password;
-
+  async loginUser(email:string, password:string) {
     //localStorage.removeItem('search');
-
-    return axios.post(this._url, {email:email, password:password})
-    .then( resp => resp.data )
-    .catch(error => {
-      error
+    
+    const resp = await axios.post(this._url, {email:email, password:password})
+    .then( resp =>
+        resp.data    
+    )
+    .catch( err => {
+        if (err.response){
+          Swal.fire(err.response.status+' '+err.response.statusText ,err.response.data.error, 'error')
+          null
+        }
+        else if (err.request) {
+          console.log(err);
+          null
+        } else{
+          console.log('err');
+          null
+        }
       }
     );
+    return resp;
+
+  }
+
+  verify() {
+    
   }
 
   getStateLogin(){
