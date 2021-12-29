@@ -1,3 +1,4 @@
+import { CookieService } from 'src/app/services/cookies.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -9,17 +10,19 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class HomeComponent implements OnInit {
   
-  constructor(private auth: AuthenticationService, public router: Router ) {
-    if(this.auth.getStateLogin()){
-      
+  constructor(
+    private auth: AuthenticationService, 
+    private router: Router, 
+    private cookie : CookieService 
+  ){
+    if((this.cookie.get('session') == 'true')){
+      this.auth.setStateLogin(true); //
     }
     else{
       this.router.navigateByUrl('/login')
     }
   }
-
-
-  ngOnInit(): void {
-  }
+  
+  ngOnInit(): void {}
 
 }

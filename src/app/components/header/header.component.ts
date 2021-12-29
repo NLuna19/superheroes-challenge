@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CookieService } from 'src/app/services/cookies.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class HeaderComponent implements OnInit {
   class:string = "nav-link px-2 link-dark";
   classActive:string = "border-warning border-bottom";
 
-  constructor( private auth: AuthenticationService, private localStorage: LocalStorageService) { 
+  constructor( 
+    private auth: AuthenticationService, private localStorage: LocalStorageService, 
+    private cookie: CookieService
+  ){ 
     
   }
 
@@ -24,7 +28,8 @@ export class HeaderComponent implements OnInit {
   
   setAuthFalse(){
     this.auth.setStateLogin(false);
-    this.localStorage.logout()
+    this.localStorage.logout();
+    this.cookie.delete('session');
   }
 
 }

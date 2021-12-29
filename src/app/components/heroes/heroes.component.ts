@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SuperheroesService } from 'src/app/services/superheroes.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { CookieService } from 'src/app/services/cookies.service';
 
 @Component({
   selector: 'app-heroes',
@@ -16,8 +17,13 @@ export class HeroesComponent implements OnInit {
   result: any;
   focus: number | undefined;
     
-  constructor( private superheroes: SuperheroesService, private auth: AuthenticationService, private localStorage: LocalStorageService, public router: Router ) {
-    if(this.auth.getStateLogin()){
+  constructor( 
+    private superheroes: SuperheroesService, private auth: AuthenticationService, 
+    private localStorage: LocalStorageService, private router: Router, 
+    private cookie: CookieService 
+  ){
+    if((this.cookie.get('session') == 'true')){
+      this.auth.setStateLogin(true); 
       if(localStorage.getLastSearch() === null){
         localStorage.setLastSearch('');
       }else{ 

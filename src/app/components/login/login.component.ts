@@ -5,7 +5,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CookieService } from 'src/app/services/cookies.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,11 +21,14 @@ export class LoginComponent implements OnInit {
     userpassword: new FormControl('', Validators.required)
   });
   
-  constructor( private auth: AuthenticationService, private localStorage: LocalStorageService, public router: Router, private cookie: CookieService ) { 
+  constructor( 
+    private auth: AuthenticationService, private localStorage: LocalStorageService, 
+    public router: Router, private cookie: CookieService 
+  ){ 
   }
 
   ngOnInit(): void { 
-    if (this.cookie.get('session') == 'true'){
+    if(this.cookie.get('session') == 'true'){
       this.auth.setStateLogin(true); //
       this.router.navigateByUrl('/home')
     }

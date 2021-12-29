@@ -24,6 +24,7 @@ import { HipervinculoComponent } from './components/hipervinculo/hipervinculo.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardHeroeComponent } from './components/card-heroe/card-heroe.component';
 import { PillTextComponent } from './components/pill-text/pill-text.component';
+import { CookieService } from './services/cookies.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -64,7 +65,7 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

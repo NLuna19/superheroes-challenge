@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SuperheroesService } from 'src/app/services/superheroes.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CookieService } from 'src/app/services/cookies.service';
 
 @Component({
   selector: 'app-team',
@@ -14,9 +15,13 @@ export class TeamComponent implements OnInit {
   idsTeam: any;
   focus: number | undefined;
 
-  constructor( private superheroes: SuperheroesService, private auth: AuthenticationService, public router: Router  ) { 
-    if(this.auth.getStateLogin()){
-      this.getHeroes()
+  constructor( 
+    private superheroes: SuperheroesService, private auth: AuthenticationService, 
+    private router: Router, private cookie:CookieService
+  ){ 
+    if((this.cookie.get('session') == 'true')){
+      this.auth.setStateLogin(true); 
+      this.getHeroes() //revisar
     }
     else{
       this.router.navigateByUrl('/login')
